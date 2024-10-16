@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Астероїди</title>
+</head>
+<body>
+    <h1>Астероїди</h1>
+    <div id="content">
+        <p>Завантаження...</p>
+    </div>
+    <script>
+        // Функція для отримання даних про астероїди з сервера
+        async function fetchAsteroids() {
+            try {
+                // Виконуємо запит до маршруту /api/asteroids
+                const response = await fetch('/api/asteroids');
+                const data = await response.json();
+
+                // Оновлюємо вміст сторінки отриманими даними
+                const content = data.near_earth_objects.length > 0 ? data.near_earth_objects.map(item => `
+                    <div>
+                        <h3>${item.name} (${item.designation})</h3>
+                        <p>ID: ${item.neo_reference_id}</p>
+                        <p>Абсолютна величина: ${item.absolute_magnitude_h}</p>
+                        <p>Діаметр: ${item.estimated_diameter.kilometers.estimated_diameter_min.toFixed(2)} - ${item.estimated_diameter.kilometers.estimated_diameter_max.toFixed(2)} км</p>
+                        <p><a href="${item.nasa_jpl_url}" target="_blank">Деталі на JPL</a></p>
+                    </div>
+                `).join('') : '<p>Немає даних про астероїди.</p>';
+
+                document.getElementById('content').innerHTML = content;
+            } catch (error) {
+                document.getElementById('content').innerHTML = 'Помилка при завантаженні даних';
+            }
+        }
+        
+        fetchAsteroids();
+    </script>
+</body>
+</html>
