@@ -22,11 +22,12 @@
                 const content = data.length > 0 ? data.map(item => `
                     <div>
                         <h3>${item.startTime}</h3>
-                        <p>Індекс К: ${item.kpIndex}</p>
-                        <p>Прогнозований вплив: ${item.gstDescription}</p>
+                        <p>Індекс К: ${item.allKpIndex.length > 0 ? item.allKpIndex[0].kpIndex : 'Невідомо'}</p>
+                        <p>Джерело: ${item.allKpIndex.length > 0 ? item.allKpIndex[0].source : 'Невідомо'}</p>
+                        <p><a href="${item.link}" target="_blank">Деталі</a></p>
                     </div>
                 `).join('') : '<p>Немає даних за цей період.</p>';
-                
+
                 document.getElementById('content').innerHTML = content;
             } catch (error) {
                 document.getElementById('content').innerHTML = 'Помилка при завантаженні даних';
