@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geomagnetic Storm</title>
+</head>
+<body>
+    <h1>Геомагнітні бурі за останні 30 днів</h1>
+    <div id="content">
+        <p>Завантаження...</p>
+    </div>
+    <script>
+        // Функція для отримання даних про геомагнітні бурі з сервера
+        async function fetchGST() {
+            try {
+                // Виконуємо запит до маршруту /api/gst
+                const response = await fetch('/api/gst');
+                const data = await response.json();
+
+                // Оновлюємо вміст сторінки отриманими даними
+                const content = data.length > 0 ? data.map(item => `
+                    <div>
+                        <h3>${item.startTime}</h3>
+                        <p>Індекс К: ${item.kpIndex}</p>
+                        <p>Прогнозований вплив: ${item.gstDescription}</p>
+                    </div>
+                `).join('') : '<p>Немає даних за цей період.</p>';
+                
+                document.getElementById('content').innerHTML = content;
+            } catch (error) {
+                document.getElementById('content').innerHTML = 'Помилка при завантаженні даних';
+            }
+        }
+
+        fetchGST();
+    </script>
+</body>
+</html>
