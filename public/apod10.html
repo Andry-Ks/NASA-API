@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ten Astronomy Pictures of the Day</title>
+</head>
+<body>
+    <h1>Ten Astronomy Pictures of the Day</h1>
+    <div id="content">
+        <p>Завантаження...</p>
+    </div>
+    <script>
+        async function fetchApod() {
+            try {
+                const response = await fetch('/api/apod10');
+                const data = await response.json();
+
+                const content = document.getElementById('content');
+                content.innerHTML = ''; // Очищення попереднього вмісту
+
+                data.forEach(item => {
+                    content.innerHTML += `
+                        <div>
+                            <h2>${item.title}</h2>
+                            <p>${item.date}</p>
+                            <img src="${item.url}" alt="${item.title}" style="max-width: 100%;"/>
+                            <p>${item.explanation}</p>
+                            <hr />
+                        </div>
+                    `;
+                });
+            } catch (error) {
+                document.getElementById('content').innerHTML = 'Помилка при завантаженні даних';
+            }
+        }
+
+        fetchApod();
+    </script>
+</body>
+</html>
