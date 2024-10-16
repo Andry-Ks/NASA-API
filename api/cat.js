@@ -40,7 +40,6 @@ async function init() {
         displayCats(selectedBreed);
     });
 
-    // Показати котів без фільтрації при завантаженні
     displayCats();
 }
 
