@@ -6,9 +6,9 @@
     <title>Astronomy Picture of the Day</title>
 </head>
 <body>
-    <a href="asteroids.html">Астероїди</a>
-    <a href="gst.html">Геомагнітні бурі</a>
-    <a href="apod10.html">10 астрономічних картинок дня</a>
+    <a href="asteroids.html">☄️Asteroids</a>
+    <a href="gst.html">🌞Geomagnetic storms</a>
+    <a href="apod10.html">✨Ten astronomy pics</a>
     <h1>Astronomy Picture of the Day</h1>
     <div id="content">
         <p>Завантаження...</p>
@@ -33,9 +33,25 @@
                 document.getElementById('content').innerHTML = 'Помилка при завантаженні даних';
             }
         }
-        
-        
         fetchApod();
     </script>
+
+        <style>
+            a {
+                margin: 10px;
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 18px;
+                color: rgb(61, 46, 173);
+                font-weight: bold;
+            }
+
+            a:hover {
+                color: rgb(197, 57, 136);
+            }
+
+            body {
+                background-color: rgb(246, 245, 245);
+            }
+        </style>
 </body>
 </html>
