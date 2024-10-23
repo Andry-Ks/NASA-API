@@ -7,7 +7,13 @@
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-    <h1>Near Earth Object Web Service</h1>
+    <div class="links">
+    <a href="index.html">🏠Main</a>
+    <a href="asteroids.html">☄️Asteroids</a>
+    <a href="gst.html">🌞Geomagnetic storms</a>
+    <a href="apod10.html">✨Ten astro pics</a>
+    </div>
+    <h1 class="heading">Near Earth Object Web Service</h1>
     <div id="content">
         <p>Loading...</p>
     </div>
@@ -17,7 +23,7 @@
                 const response = await fetch('/api/asteroids');
                 const data = await response.json();
                 const content = data.near_earth_objects.length > 0 ? data.near_earth_objects.map(item => `
-                    <div>
+                    <div class="content-data">
                         <h3>${item.name} (${item.designation})</h3>
                         <p>ID: ${item.neo_reference_id}</p>
                         <p>Absolute magnitude: ${item.absolute_magnitude_h}</p>

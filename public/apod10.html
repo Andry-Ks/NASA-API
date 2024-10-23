@@ -7,7 +7,13 @@
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-    <h1>Ten Astronomy Pictures of the Day</h1>
+    <div class="links">
+    <a href="index.html">🏠Main</a>
+    <a href="asteroids.html">☄️Asteroids</a>
+    <a href="gst.html">🌞Geomagnetic storms</a>
+    <a href="apod10.html">✨Ten astro pics</a>
+    </div>
+    <h1 class="heading">Ten Astronomy Pictures of the Day</h1>
     <div id="content">
         <p>Loading...</p>
     </div>
@@ -22,7 +28,7 @@
 
                 data.forEach(item => {
                     content.innerHTML += `
-                        <div>
+                        <div class="content-data">
                             <h2>${item.title}</h2>
                             <p>${item.date}</p>
                             <img src="${item.url}" alt="${item.title}" style="max-width: 100%;"/>

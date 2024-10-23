@@ -4,9 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Geomagnetic Storm</title>
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-    <h1>Geomagnetic storms in the last 30 days</h1>
+    <div class="links">
+    <a href="index.html">🏠Main</a>
+    <a href="asteroids.html">☄️Asteroids</a>
+    <a href="gst.html">🌞Geomagnetic storms</a>
+    <a href="apod10.html">✨Ten astro pics</a>
+    </div>
+    <h1 class="heading">Geomagnetic storms in the last 30 days</h1>
     <div id="content">
         <p>Loading...</p>
     </div>
@@ -45,21 +52,5 @@
 
         fetchGST();
     </script>
-
-    <style>
-body {
-    background-color: rgb(246, 245, 245);
-    padding-left: 40px;
-    padding-top: 40px;
-    padding-right: 40px;
-    padding-bottom: 40px;
-}
-p {
-    font-family: sans-serif;
-}
- h1, h2, h3, p {
-    color: rgb(22, 22, 22);
-}
-    </style>
 </body>
 </html>

@@ -7,7 +7,13 @@
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-    <h1>Cats Gallery</h1>
+    <div class="links">
+    <a href="index.html">🏠Main</a>
+    <a href="asteroids.html">☄️Asteroids</a>
+    <a href="gst.html">🌞Geomagnetic storms</a>
+    <a href="apod10.html">✨Ten astro pics</a>
+</div>
+    <h1 class="heading">Cats Gallery</h1>
     <div id="content">
         <p>Loading...</p>
     </div>
@@ -17,7 +23,7 @@
                 const response = await fetch('/api/cats');
                 const data = await response.json();
                 document.getElementById('content').innerHTML = data.map(cat => `
-                    <div>
+                    <div class="content-data">
                         <img src="${cat.url}" alt="Cat" style="max-width: 100%;"/>
                     </div>
                 `).join('');
