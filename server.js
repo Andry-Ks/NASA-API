@@ -13,7 +13,7 @@ app.use('/api/cats', require('./api/cats'));
 app.use('/api/asteroids', require('./api/asteroids'));
 app.use('/api/gst', require('./api/gst'));
 
-// Запуск сервера
+//Starting the server
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
