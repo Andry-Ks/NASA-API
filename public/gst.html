@@ -6,19 +6,16 @@
     <title>Geomagnetic Storm</title>
 </head>
 <body>
-    <h1>Геомагнітні бурі за останні 30 днів</h1>
+    <h1>Geomagnetic storms in the last 30 days</h1>
     <div id="content">
-        <p>Завантаження...</p>
+        <p>Loading...</p>
     </div>
     <script>
-        // Функція для отримання даних про геомагнітні бурі з сервера
         async function fetchGST() {
             try {
-                // Виконуємо запит до маршруту /api/gst
                 const response = await fetch('/api/gst');
                 const data = await response.json();
 
-                // Функція для визначення кольору залежно від значення індексу К
                 function getColorForKpIndex(kpIndex) {
                 if (kpIndex < 3) return 'green';
                 if (kpIndex < 5) return 'yellow';
@@ -26,26 +23,23 @@
                 return 'red';
                 }
 
-// Оновлюємо вміст сторінки отриманими даними
     const content = data.length > 0 ? data.map(item => {
-    const kpIndex = item.allKpIndex.length > 0 ? item.allKpIndex[0].kpIndex : 'Невідомо';
-    const color = kpIndex !== 'Невідомо' ? getColorForKpIndex(kpIndex) : 'gray';
+    const kpIndex = item.allKpIndex.length > 0 ? item.allKpIndex[0].kpIndex : 'Unknown';
+    const color = kpIndex !== 'Unknown' ? getColorForKpIndex(kpIndex) : 'gray';
 
     return `
         <div style="border-left: 5px solid ${color}; padding-left: 10px;">
             <h3>${item.startTime}</h3>
-            <p style="color: ${color};">Індекс К: ${kpIndex}</p>
-            <p>Джерело: ${item.allKpIndex.length > 0 ? item.allKpIndex[0].source : 'Невідомо'}</p>
-            <p><a href="${item.link}" target="_blank">Деталі</a></p>
-            <p>Індекс К вказує на рівень збурення магнітного поля Землі, вище значення означає сильнішу бурю.</p>
+            <p style="color: ${color};">Index К: ${kpIndex}</p>
+            <p>Source: ${item.allKpIndex.length > 0 ? item.allKpIndex[0].source : 'Unknown'}</p>
+            <p><a href="${item.link}" target="_blank">Details</a></p>
+            <p>Index K indicates the level of disturbance of the Earth's magnetic field, a higher value means a stronger storm.</p>
         </div>
     `;
-    }).join('') : '<p>Немає даних за цей період.</p>';
-
-
+    }).join('') : '<p>No data for this period.</p>';
             document.getElementById('content').innerHTML = content;
             } catch (error) {
-            document.getElementById('content').innerHTML = 'Помилка при завантаженні даних';
+            document.getElementById('content').innerHTML = 'Error loading data';
             }
     }
 

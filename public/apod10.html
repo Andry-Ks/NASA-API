@@ -9,7 +9,7 @@
 <body>
     <h1>Ten Astronomy Pictures of the Day</h1>
     <div id="content">
-        <p>Завантаження...</p>
+        <p>Loading...</p>
     </div>
     <script>
         async function fetchApod() {
@@ -18,7 +18,7 @@
                 const data = await response.json();
 
                 const content = document.getElementById('content');
-                content.innerHTML = ''; // Очищення попереднього вмісту
+                content.innerHTML = ''; //Clear previous content
 
                 data.forEach(item => {
                     content.innerHTML += `
@@ -32,7 +32,7 @@
                     `;
                 });
             } catch (error) {
-                document.getElementById('content').innerHTML = 'Помилка при завантаженні даних';
+                document.getElementById('content').innerHTML = 'Error loading data';
             }
         }
 

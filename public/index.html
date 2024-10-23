@@ -11,21 +11,18 @@
     <a href="asteroids.html">☄️Asteroids</a>
     <a href="gst.html">🌞Geomagnetic storms</a>
     <a href="apod10.html">✨Ten astronomy pics</a>
-    <a href="/cats.html">🐈Cats</a>
+    <!-- <a href="/cats.html">🐈Cats</a> -->
     </div>
     <h1>Astronomy Picture of the Day</h1>
     <div id="content">
-        <p>Завантаження...</p>
+        <p>Loading...</p>
     </div>
     <script>
-        // Функція для отримання даних з сервера
         async function fetchApod() {
             try {
-                // Виконуємо запит до маршруту /apod
                 const response = await fetch('/api/apod');
                 const data = await response.json();
 
-                // Оновлюємо вміст сторінки отриманими даними
                 document.getElementById('content').innerHTML = `
                     <h2>${data.title}</h2>
                     <p>${data.date}</p>
@@ -33,8 +30,7 @@
                     <p>${data.explanation}</p>
                 `;
             } catch (error) {
-                // Повідомлення про помилку, якщо дані не вдалося завантажити
-                document.getElementById('content').innerHTML = 'Помилка при завантаженні даних';
+                document.getElementById('content').innerHTML = 'Error loading data';
             }
         }
         fetchApod();

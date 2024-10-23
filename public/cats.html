@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,24 +9,20 @@
 <body>
     <h1>Cats Gallery</h1>
     <div id="content">
-        <p>Завантаження...</p>
+        <p>Loading...</p>
     </div>
     <script>
-        // Функція для отримання даних з сервера
         async function fetchCats() {
             try {
-                // Виконуємо запит до маршруту /cats
                 const response = await fetch('/api/cats');
                 const data = await response.json();
-
                 document.getElementById('content').innerHTML = data.map(cat => `
                     <div>
                         <img src="${cat.url}" alt="Cat" style="max-width: 100%;"/>
                     </div>
                 `).join('');
             } catch (error) {
-                // Повідомлення про помилку, якщо дані не вдалося завантажити
-                document.getElementById('content').innerHTML = 'Помилка при завантаженні даних';
+                document.getElementById('content').innerHTML = 'Error loading data';
             }
         }
         
