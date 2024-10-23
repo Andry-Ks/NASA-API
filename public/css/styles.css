@@ -45,3 +45,10 @@ p {
     color: rgb(22, 22, 22);
     text-align: center;
 }
+
+@media (max-width: 1200px) {
+    .links {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
