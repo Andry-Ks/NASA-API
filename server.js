@@ -9,7 +9,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api/apod', require('./api/apod'));
 app.use('/api/apod10', require('./api/apod10'));
-app.use('/api/cats', require('./api/cats'));
 app.use('/api/asteroids', require('./api/asteroids'));
 app.use('/api/gst', require('./api/gst'));
 
