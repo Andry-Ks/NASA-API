@@ -23,7 +23,7 @@ To start the application, run:
 npm start
 
 ### API Key
-To fetch data from the NASA API, you will need an API key. Set up your environment variable API_KEY with your NASA API key.
+To fetch data from the NASA API, you will need an API key. Set up your environment variable API_KEY with your NASA API key. Api key can be obtained on the web site api.nasa.gov
 
 ### Acknowledgements
 NASA for providing the Open APIs, including APOD, geomagnetic forecasts, and data on near-Earth objects.
