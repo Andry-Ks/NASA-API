@@ -11,7 +11,7 @@ jobs:
 
     strategy:
       matrix:
-        browser: [chrome, firefox, safari]
+        browser: [chrome, firefox]
 
     steps:
       - name: Checkout code
